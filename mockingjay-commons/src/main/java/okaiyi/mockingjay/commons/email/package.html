@@ -1,0 +1,25 @@
+调用java mail发送简单邮件
+实例
+		byte[] content=Files.readAllBytes(Paths.get(".txt"));
+		String sendContent=new String(content);
+		System.out.println(sendContent);
+		EmailSession session=new EmailSession("smtp.163.com", EmailSession.SMTP_DEFAULT_PORT,
+				"obm@163.com", "obm.com", "obm@163.com", "有点奇葩");
+		EmailSender sender=new EmailSender(session);
+		EmailMessage msg=new EmailMessage(new String[]{
+				"32713195@qq.com"
+		}, "配置信息",sendContent);
+		sender.setMessage(msg);
+		sender.send(new EmailSenderHandler() {
+			
+			@Override
+			public void sendError(Exception e) {
+				e.printStackTrace();
+			}
+			
+			@Override
+			public void handler(EmailMessage message, long time) {
+				System.out.println("time:"+time);
+			}
+		});
+
