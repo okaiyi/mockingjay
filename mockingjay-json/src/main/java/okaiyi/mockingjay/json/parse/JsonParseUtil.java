@@ -58,5 +58,4 @@ public  class JsonParseUtil {
         }
         return arrayList;
     }
-    
 }

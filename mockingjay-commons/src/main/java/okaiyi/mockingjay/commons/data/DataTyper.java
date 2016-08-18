@@ -21,13 +21,17 @@ public class DataTyper {
 	public static final DataTyper create(Object obj){
 		return new DataTyper(obj);
 	}
-
+	
 	public Long getLong(long def){
 		try{
 			return Long.valueOf(obj.toString());
 		}catch(Exception e){
 			return def;
 		}
+	}
+	
+	public Object getObject(){
+		return obj;
 	}
 	
 	public Boolean getBoolean(boolean def){
