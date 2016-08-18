@@ -1,6 +1,7 @@
 package okaiyi.mockingjay.json;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 public class TestJsonBean {
@@ -8,7 +9,16 @@ public class TestJsonBean {
 	private int age;
 	private Date date;
 	private Map<String, String> map;
+	private List<String> beanList;
 	
+	
+	
+	public List<String> getBeanList() {
+		return beanList;
+	}
+	public void setBeanList(List<String> beanList) {
+		this.beanList = beanList;
+	}
 	public Map<String, String> getMap() {
 		return map;
 	}

@@ -23,7 +23,7 @@ public class DateRange implements Serializable{
 
 	void setStartDate(Date startDate) {
 		this.startDate = startDate;
-	}
+	} 
 	/**
 	 * 获取结束时间
 	 * @return

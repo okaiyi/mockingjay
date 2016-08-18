@@ -23,7 +23,7 @@
       <version>1.0</version>
     </dependency>
   </dependencies>
-  <parent>
+  <parent> 
 		<groupId>okaiyi.mockingjay</groupId>
 		<artifactId>okaiyi.mockingjay</artifactId>
 		<version>1.0</version>
