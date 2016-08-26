@@ -13,7 +13,7 @@ import org.junit.Test;
 import okaiyi.mockingjay.commons.fs.FileDirectory;
 import okaiyi.mockingjay.commons.fs.FileFragment;
 import okaiyi.mockingjay.commons.fs.FileFragmentReaderHandler;
-import okaiyi.mockingjay.commons.fs.IOStreamUtils;
+import okaiyi.mockingjay.commons.utils.IOStreamUtils;
 import okaiyi.mockingjay.commons.utils.StringUtils;
 
 public class FileFragmentTest {

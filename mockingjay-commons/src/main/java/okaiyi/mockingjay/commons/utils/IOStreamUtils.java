@@ -1,4 +1,4 @@
-package okaiyi.mockingjay.commons.fs;
+package okaiyi.mockingjay.commons.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
@@ -16,7 +16,9 @@ import java.nio.channels.FileLock;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import okaiyi.mockingjay.commons.utils.StringUtils;
+import okaiyi.mockingjay.commons.fs.FileDirectory;
+import okaiyi.mockingjay.commons.fs.FileFragment;
+import okaiyi.mockingjay.commons.fs.FileFragmentReaderHandler;
 
 /**
  * IO流工具

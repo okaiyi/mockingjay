@@ -795,6 +795,10 @@ public class FileMimeType {
 	 * @return
 	 */
 	public static String getMimeType(File file){
-		return ftm.getContentType(file);
+		String mimeType = ftm.getContentType(file);
+		if(mimeType==null||mimeType.equals("")){
+			return "file/*";
+		}
+		return mimeType;
 	}
 }

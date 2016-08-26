@@ -14,6 +14,9 @@ import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import okaiyi.mockingjay.commons.utils.IOStreamUtils;
+
 import org.apache.commons.codec.digest.DigestUtils;
 /**
  * 文件描述,仅描述文件,不描述文件夹

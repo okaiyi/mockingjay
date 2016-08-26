@@ -4,6 +4,7 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.nio.charset.UnsupportedCharsetException;
+import java.util.HashMap;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
@@ -101,5 +102,17 @@ public class CoderUtil {
 	
 	public static final String MD5(String str){
 		return DigestUtils.md5Hex(str.getBytes(charset));
+	}
+	private static HashMap<String, String> md5Cache;
+	public static final String MD5UseCache(String str){
+		if(md5Cache==null){
+			md5Cache=new HashMap<String, String>();
+		}
+		String md5=md5Cache.get(str);
+		if(md5==null){
+			md5=MD5(str);
+			md5Cache.put(str, md5);
+		}
+		return md5;
 	}
 }

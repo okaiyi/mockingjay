@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import okaiyi.mockingjay.commons.fs.IOStreamUtils;
+import okaiyi.mockingjay.commons.utils.IOStreamUtils;
 /**
  * 日志记录器,记录服务器访问日志,常规信息日志,和异常日志,在指定的目录下每日一个文件 
  *
