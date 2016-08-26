@@ -13,6 +13,8 @@
 		<module>../mockingjay-commons</module>
 		<module>../mockingjay-task</module>
 		<module>../mockingjay-json</module>
+		<module>../mockingjay-net</module>
+		<module>../mockingjay-pki</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
