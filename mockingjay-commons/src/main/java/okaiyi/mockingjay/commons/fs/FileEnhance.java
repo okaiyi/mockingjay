@@ -47,7 +47,7 @@ public class FileEnhance implements FileDescriptor,FileDirectory{
 	 * @throws IOException
 	 */
 	public static FileDirectory getDirectory(File file)throws IOException{
-		if(file.isDirectory())throw new IOException("File is must be Directory.");
+		if(!file.isDirectory())throw new IOException("File is must be Directory.");
 		Path path=Paths.get(file.toURI());
 		if(!Files.exists(path, LinkOption.NOFOLLOW_LINKS)){//写文件目录不存在,创建写文件目录
 			Files.createDirectories(path);
@@ -198,5 +198,21 @@ public class FileEnhance implements FileDescriptor,FileDirectory{
 			IOStreamUtils.close(in);
 		}
 		return sha1;
+	}
+	/**
+	 * 获取系统临时目录
+	 * @return
+	 */
+	public static final FileDirectory getTempDirectory(){
+		try {
+			return getDirectory(new File(System.getProperty(TEMP_DIR)));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public File getFileDir() {
+		return getFile();
 	}
 }

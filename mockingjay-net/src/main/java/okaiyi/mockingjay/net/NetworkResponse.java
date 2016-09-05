@@ -4,6 +4,7 @@ package okaiyi.mockingjay.net;
  *
  */
 public interface NetworkResponse<T>{
+	String getCharset();
 	/**
 	 * 获取响应内容
 	 * @return

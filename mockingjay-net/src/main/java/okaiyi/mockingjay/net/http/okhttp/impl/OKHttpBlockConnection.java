@@ -120,7 +120,8 @@ public class OKHttpBlockConnection<T> extends HttpBlockConnector<T>{
 		String charset=HttpUtils.getCharsetByContentType(contentType);
 		hr.setCharset(charset);
 		InputStream in=resp.body().byteStream();
-		hr.setNetworkData(parser.parse(in, charset));
+		String contentLength=resp.header(HttpHeaderNames.CONTENT_LENGTH.toString(),"0");
+		hr.setNetworkData(parser.parse(in,contentLength==null?0:Integer.parseInt(contentLength), charset));
 		IOStreamUtils.close(in);
 		return hr;
 	}

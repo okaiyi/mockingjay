@@ -19,6 +19,7 @@ import java.util.Comparator;
 import okaiyi.mockingjay.commons.fs.FileDirectory;
 import okaiyi.mockingjay.commons.fs.FileFragment;
 import okaiyi.mockingjay.commons.fs.FileFragmentReaderHandler;
+import okaiyi.mockingjay.commons.fs.IOMonitor;
 
 /**
  * IO流工具
@@ -121,37 +122,26 @@ public class IOStreamUtils {
 			}
 			close(fos);
 		}
-		/*if (file.exists() && file.isDirectory()){
-			throw new IOException("File is Directory.");
-		}
-		File tempFile=new File(System.getProperty(FileDirectory.TEMP_DIR)+file.getName());
-		RandomAccessFile out = new RandomAccessFile(tempFile, "rw");
-		FileChannel fcout = out.getChannel();
-		FileLock flout = fcout.lock();
-		out.seek(fragment.getOffset());
-		out.write(bytes, 0, fragment.getCurrentLength());
-		System.out.println(fragment);
-		flout.release();
-		close(out);
-		if(tempFile.length()==fragment.getFileLength()){
-			//文件已全部写入完毕
-			if(file.exists()){
-				file.delete();
-			}
-			writeToStream(new FileInputStream(tempFile), new FileOutputStream(file), true, 8192);
-			tempFile.delete();
-		}*/
 	}
-
+	public static final boolean writeToStream(InputStream in, OutputStream out, boolean isClose, int buff){
+		return writeToStream(in, out, isClose, buff,null);
+	}
 	/**
 	 * 将输入流写出到输出流
 	 */
-	public static final boolean writeToStream(InputStream in, OutputStream out, boolean isClose, int buff) {
-		int len = -1;
-		byte[] bytes = new byte[buff];
+	public static final boolean writeToStream(InputStream in, OutputStream out, boolean isClose, int buff,
+			IOMonitor ioMonitor) {
 		try {
+			int len = -1;
+			byte[] bytes = new byte[buff];
+			int available=in.available();
+			int total=0;
 			while ((len = in.read(bytes, 0, buff)) != -1) {
 				out.write(bytes, 0, len);
+				if(ioMonitor!=null){
+					ioMonitor.process(available, total, len);
+					total+=len;
+				}
 			}
 			if (isClose) {
 				close(in);

@@ -1,9 +1,13 @@
 package okaiyi.mockingjay.net.data;
 
 import okaiyi.mockingjay.net.NetworkData;
-public class StringNetworkData implements NetworkData<String>{
+/**
+ * 文本标示的网络数据
+ *
+ */
+public class TxtNetworkData implements NetworkData<String>{
 	private String string;
-	public StringNetworkData(String string){
+	public TxtNetworkData(String string){
 		this.string=string;
 	}
 	@Override

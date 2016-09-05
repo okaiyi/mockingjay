@@ -6,28 +6,27 @@ import java.io.UnsupportedEncodingException;
 
 import okaiyi.mockingjay.commons.utils.IOStreamUtils;
 import okaiyi.mockingjay.net.NetworkData;
+import okaiyi.mockingjay.net.NetworkException;
 import okaiyi.mockingjay.net.ResponseParser;
-import okaiyi.mockingjay.net.data.StringNetworkData;
-public class StringParser implements ResponseParser<String>{
-	private int buf;
-	
+import okaiyi.mockingjay.net.data.TxtNetworkData;
+public class StringParser extends ResponseParser<String>{
 	public StringParser(){
-		buf=2048;
+		super();
 	}
-	
 	public StringParser(int buf){
+		this();
 		this.buf=buf;
 	}
 	
 	@Override
-	public NetworkData<String> parse(InputStream in,String charset) {
+	public NetworkData<String> parse(InputStream in,int available,String charset)
+	throws NetworkException{
 		ByteArrayOutputStream out=new ByteArrayOutputStream();
 		IOStreamUtils.writeToStream(in, out, true,buf);
 		try {
-			return new StringNetworkData(new String(out.toByteArray(),charset));
+			return new TxtNetworkData(new String(out.toByteArray(),charset));
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			throw new NetworkException(e);
 		}
-		return null;
 	}
 }

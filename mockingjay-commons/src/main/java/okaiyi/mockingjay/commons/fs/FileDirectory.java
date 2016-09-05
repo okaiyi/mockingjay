@@ -26,5 +26,10 @@ public interface  FileDirectory {
 	 * @return 创建成功返回File,失败返回null
 	 */
 	public File createFile(String fileName);
+	/**
+	 * 获取文件路径
+	 * @return
+	 */
+	public File getFileDir();
 	
 }
