@@ -17,8 +17,8 @@ public class TaskExcutorTest {
 			@Override
 			public void destory(Tasker[] tasker) {
 				System.out.println("destory:" + tasker.length);
-				for(Tasker<String> task:tasker){
-					task.doTask("");
+				for(Tasker task:tasker){
+					task.doTask();
 				}
 			}
 
