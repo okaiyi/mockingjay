@@ -21,8 +21,9 @@ import org.junit.Test;
 public class HttpTest {
 	@Test
 	public void testGet() throws NetworkException{
-		HttpGetRequest req=new HttpGetRequest("http://www.zg163.net");
+		HttpGetRequest req=new HttpGetRequest("http://www.zg163.com/");
 		HttpConnector<String> conn=new OKHttpBlockConnection<String>();
+		conn.setConnectTimeout(100);
 		HttpResponse<String> html=conn.doRequest(req, new StringParser());
 		System.out.println(html.getHttpStatus());
 		Map<HttpHeaderNames, String> headers=html.getResponseHeader();

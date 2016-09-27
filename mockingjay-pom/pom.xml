@@ -15,6 +15,7 @@
 		<module>../mockingjay-json</module>
 		<module>../mockingjay-net</module>
 		<module>../mockingjay-pki</module>
+		<module>../mockingjay-weixin</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
